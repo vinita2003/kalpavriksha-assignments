@@ -19,7 +19,7 @@ void removeWhitespaces(char *exp)
     *p = '\0';
 };
 
-bool checkValidity(char *exp)
+bool isValidExpression(char *exp)
 {
     char oprs[4] = {'+', '-', '*', '/'};
     for (int i = 0; exp[i] != '\0'; i++)
@@ -98,7 +98,7 @@ int main()
     printf("Enter the mathematical expression: ");
     fgets(exp, 100, stdin);
     removeWhitespaces(exp);
-    if (checkValidity(exp))
+    if (isValidExpression(exp))
     {
         int result = calculate(exp);
         printf("Result: %d\n", result);
