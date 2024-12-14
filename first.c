@@ -21,24 +21,32 @@ void removeWhitespaces(char *exp)
 
 bool isValidExpression(char *exp)
 {
-    char oprs[4] = {'+', '-', '*', '/'};
+    char operators[4] = {'+', '-', '*', '/'};
+    bool isValid = true;
+
     for (int i = 0; exp[i] != '\0'; i++)
     {
         if (!(exp[i] >= '0' && exp[i] <= '9') && !(exp[i] == '+' || exp[i] == '*' || exp[i] == '-' || exp[i] == '/'))
         {
-            return false;
+            isValid = false;
+            break;
         }
-        if ((exp[i] == oprs[0] || exp[i] == oprs[1] || exp[i] == oprs[2] || exp[i] == oprs[3]) && (exp[i + 1] == oprs[0] || exp[i + 1] == oprs[1] || exp[i + 1] == oprs[2] || exp[i + 1] == oprs[3]))
+        if ((exp[i] == operators[0] || exp[i] == operators[1] || exp[i] == operators[2] || exp[i] == operators[3]) && 
+            (exp[i + 1] == operators[0] || exp[i + 1] == operators[1] || exp[i + 1] == operators[2] || exp[i + 1] == operators[3]))
         {
-            return false;
+            isValid = false;
+            break;
         }
         if (exp[i] == '/' && exp[i + 1] == '0')
         {
-            return false;
+            isValid = false;
+            break;
         }
     }
-    return true;
+
+    return isValid;
 }
+
 
 int calculate(const char *exp)
 {
@@ -58,7 +66,7 @@ int calculate(const char *exp)
             num = num * 10 + (c - '0');
         }
 
-        // if the char is operator or end of string
+        
         if (!isdigit(c) && c != ' ' || i == len - 1)
         {
             if (sign == '+')
