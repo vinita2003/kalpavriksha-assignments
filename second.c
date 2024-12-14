@@ -28,54 +28,55 @@ void addUser()
 {
     User user;
     int id, found = 0;
-
-    
-    FILE *file = fopen(FILENAME, "r");
+    FILE *file = NULL;
 
     printf("Enter User ID: ");
     scanf("%d", &id);
 
-    while (fscanf(file, "%d %s %s %d", &user.id, user.fname, user.lname, &user.age) != EOF)
+    file = fopen(FILENAME, "r");
+    if (file != NULL)
     {
-        if (user.id == id)
+        while (fscanf(file, "%d %s %s %d", &user.id, user.fname, user.lname, &user.age) != EOF)
         {
-            found = 1;
-            printf("User ID already exists. Please enter a new one.\n");
-            break;
+            if (user.id == id)
+            {
+                found = 1;
+                printf("User ID already exists. Please enter a new one.\n");
+                break;
+            }
+        }
+        fclose(file);
+    }
+
+    if (!found)
+    {
+        file = fopen(FILENAME, "a");
+        if (file != NULL)
+        {
+            user.id = id;
+            getchar();
+            printf("Enter First Name: ");
+            fgets(user.fname, 100, stdin);
+            user.fname[strcspn(user.fname, "\n")] = '\0';
+
+            printf("Enter Last Name: ");
+            fgets(user.lname, 100, stdin);
+            user.lname[strcspn(user.lname, "\n")] = '\0';
+
+            printf("Enter Age: ");
+            scanf("%d", &user.age);
+
+            fprintf(file, "%d %s %s %d\n", user.id, user.fname, user.lname, user.age);
+            printf("User added successfully.\n");
+            fclose(file);
+        }
+        else
+        {
+            printf("Error: Could not open file for writing.\n");
         }
     }
-
-    if (found)
-    {
-        fclose(file);
-        return;
-    }
-    fclose(file);
-
-    
-    file = fopen(FILENAME, "a");
-    if (file == NULL)
-    {
-        printf("Error: Could not open file for writing.\n");
-        return;
-    }
-
-    user.id = id;
-    getchar();
-    printf("Enter First Name: ");
-    fgets(user.fname, 100, stdin);
-    user.fname[strcspn(user.fname, "\n")] = '\0';
-
-    printf("Enter Last Name: ");
-    fgets(user.lname, 100, stdin);
-    user.lname[strcspn(user.lname, "\n")] = '\0';
-
-    printf("Enter Age: ");
-    scanf("%d", &user.age);
-    fprintf(file, "%d %s %s %d\n", user.id, user.fname, user.lname, user.age);
-    fclose(file);
-    printf("User added successfully.\n");
 }
+
 
 void displayUsers()
 {
