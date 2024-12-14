@@ -29,7 +29,7 @@ void addUser()
     User user;
     int id, found = 0;
 
-    // first opening in read mode to check if the id is unique or not
+    
     FILE *file = fopen(FILENAME, "r");
 
     printf("Enter User ID: ");
@@ -52,7 +52,7 @@ void addUser()
     }
     fclose(file);
 
-    // if new user id then append the user
+    
     file = fopen(FILENAME, "a");
     if (file == NULL)
     {
