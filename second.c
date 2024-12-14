@@ -63,8 +63,15 @@ void addUser()
             fgets(user.lname, 100, stdin);
             user.lname[strcspn(user.lname, "\n")] = '\0';
 
-            printf("Enter Age: ");
-            scanf("%d", &user.age);
+           do {
+                printf("Enter Age: ");
+                scanf("%d", &user.age);
+
+                if (user.age < 0)
+                {
+                    printf("Age cannot be negative. Please enter a valid age.\n");
+                }
+            } while (user.age < 0);
 
             fprintf(file, "%d %s %s %d\n", user.id, user.fname, user.lname, user.age);
             printf("User added successfully.\n");
