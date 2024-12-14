@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#define MAX_EXP_SIZE 100 
 
 void removeWhitespaces(char *exp)
 {
@@ -102,9 +104,9 @@ int calculate(const char *exp)
 
 int main()
 {
-    char exp[100];
+    char exp[MAX_EXP_SIZE];
     printf("Enter the mathematical expression: ");
-    fgets(exp, 100, stdin);
+    fgets(exp, MAX_EXP_SIZE, stdin);
     removeWhitespaces(exp);
     if (isValidExpression(exp))
     {
