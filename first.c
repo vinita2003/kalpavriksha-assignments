@@ -3,7 +3,6 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdbool.h>
-#include <stdlib.h>
 #define MAX_EXP_SIZE 100 
 
 void removeWhitespaces(char *exp)
