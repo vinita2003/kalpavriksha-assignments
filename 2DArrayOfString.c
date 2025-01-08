@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #define MAX_NAME_LENGTH 50
 #define MAX_ROWS 10
@@ -74,7 +75,17 @@ int main() {
     }
 
     printf("\nNumber of names starting with a vowel: %d\n", vowelCount);
-    printf("The longest name: %s\n", longestName);
+    printf("The longest name:");
+     for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            if(strlen(longestName) == strlen(names[i][j])){
+                printf("%s ", names[i][j]);
+            }
+            
+        }
+        
+    }
+
 
     return 0;
 }
