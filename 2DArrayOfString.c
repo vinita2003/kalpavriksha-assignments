@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#include<stdio.h>
+#include<string.h>
 
 #define MAX_NAME_LENGTH 50
 #define MAX_ROWS 10
@@ -12,80 +12,85 @@ int isVowel(char ch) {
     return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u');
 }
 
-int stringLength(char str[]) {
-    int length = 0;
-    while (str[length] != '\0') {
-        length++;
-    }
-    return length;
-}
-
-void stringCopy(char dest[], char src[]) {
+void stringCopy(char dest[], char src[]){
     int i = 0;
-    while (src[i] != '\0') {
+    while(src[i]!= '\0'){
         dest[i] = src[i];
         i++;
     }
     dest[i] = '\0';
 }
 
-int main() {
-    int rows, cols, i, j;
-    char names[MAX_ROWS][MAX_COLS][MAX_NAME_LENGTH];
-    int vowelCount = 0;
-    char longestName[MAX_NAME_LENGTH] = "";
-    int longestLength = 0;
+int main(){
+    int row, columns;
 
-    printf("Enter number of rows :");
-    scanf("%d", &rows);
-    while (rows < 1 || rows > MAX_ROWS) {
+    printf("Enter number of rows:");
+    scanf("%d", &row);
+    while (row < 1 || row > MAX_ROWS) {
         printf("Invalid input. Enter number of rows (1-10): ");
-        scanf("%d", &rows);
+        scanf("%d", &row);
     }
 
-    printf("Enter number of columns : ");
-    scanf("%d", &cols);
-    while (cols < 1 || cols > MAX_COLS) {
+    printf("Enter number of columns:");
+    scanf("%d", &columns);
+    while (columns < 1 || columns > MAX_COLS) {
         printf("Invalid input. Enter number of columns (1-10): ");
-        scanf("%d", &cols);
+        scanf("%d", &columns);
     }
 
     printf("Enter the names:\n");
-    for (i = 0; i < rows; i++) {
-        for (j = 0; j < cols; j++) {
-            printf("Name at (%d,%d): ", i, j);
-            scanf("%s", names[i][j]);
-            if (isVowel(names[i][j][0])) {
+
+    char strings[MAX_ROWS][MAX_COLS][MAX_NAME_LENGTH];
+
+int vowelCount = 0;
+    for(int i = 0; i < row; i++){
+        for(int j = 0; j < columns; j++){
+            printf("Names at (%d , %d):" ,i,j);
+            scanf("%s", strings[i][j]);
+            if (isVowel(strings[i][j][0])) {
                 vowelCount++;
             }
-            int currentLength = stringLength(names[i][j]);
-            if (currentLength > longestLength) {
-                longestLength = currentLength;
-                stringCopy(longestName, names[i][j]);
-            }
+            
         }
     }
-
-    printf("\nThe 2D array of names is:\n");
-    for (i = 0; i < rows; i++) {
-        for (j = 0; j < cols; j++) {
-            printf("%s ", names[i][j]);
+     printf("The 2D array of names is:\n");
+  for(int i = 0; i < row; i++){
+        for(int j = 0; j < columns; j++){
+            
+            printf("%s ", strings[i][j]);
         }
         printf("\n");
     }
 
-    printf("\nNumber of names starting with a vowel: %d\n", vowelCount);
+   
+
+   printf("Number of names starting with a vowel: %d\n", vowelCount);
+
+   char longestName[50];
+   int max = 0;
+   for(int i = 0; i < row; i++){
+        for(int j = 0; j < columns; j++){
+            int r = strlen(strings[i][j]);
+            if(r > max){
+                max = r;
+                stringCopy(longestName ,strings[i][j]);
+            }
+        }
+        
+    }
     printf("The longest name:");
-     for (i = 0; i < rows; i++) {
-        for (j = 0; j < cols; j++) {
-            if(strlen(longestName) == strlen(names[i][j])){
-                printf("%s ", names[i][j]);
+    
+     for (int i = 0; i < row; i++) {
+        for ( int j = 0; j < columns; j++) {
+            if(strlen(longestName) == strlen(strings[i][j])){
+                printf("%s ", strings[i][j]);
             }
             
         }
         
     }
 
+   return 0;
 
-    return 0;
+
 }
