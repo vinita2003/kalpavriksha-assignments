@@ -6,3 +6,5 @@ Branch 2: Contains the implementation of CRUD (Create, Read, Update, Delete) ope
 Branch-3: Contains the implementation of modular exponentiation to calculate B power N modM efficiently, handling large exponents without overflow.
 
 Branch 4: Contains the implementation of a program to read a 2D array of student names, display it in matrix format, count names starting with vowels, and find the longest name.
+
+Branch-5: Contains the implementation of a program to read a 2D array of strings of size n x m. find and print all unique strings that appear more than once in the array.
