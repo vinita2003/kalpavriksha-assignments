@@ -3,41 +3,41 @@
  
 int main()
 {
-   int m;
-   scanf("%d", &m);
-   int n;
-   scanf("%d", &n);
-   char string[m][n][50];
-   for(int i = 0; i < m; i++){
-       for(int j = 0; j < n; j++){
-           scanf("%s", string[i][j]);
+   int rows;
+   scanf("%d", &rows);
+   int columns;
+   scanf("%d", &columns);
+   char string[rows][columns][50];
+   for(int index = 0; index < rows; index++){
+       for(int index1 = 0; index1 < columns; index1++){
+           scanf("%s", string[index][index1]);
        }
    }
 
- char str[m*n][50];
+ char str[rows*columns][50];
  int istr = 0;
  
- for(int i = 0; i < m; i++){
-     for(int j = 0; j < n; j++){
-         strcpy(str[istr++], string[i][j]);
+ for(int index = 0; index < rows; index++){
+     for(int index1 = 0; index1 < columns; index1++){
+         strcpy(str[istr++], string[index][index1]);
      }
  }
  
  int ans[100] = {0};
  
- for(int i =0; i < m*n; i++){
-     for(int j = 0; j <= i; j++){
-        if(strcmp(str[i], str[j]) == 0){
-            ans[j]++;
+ for(int index =0; index < rows*columns; index++){
+     for(int index1 = 0; index1 <= index; index1++){
+        if(strcmp(str[index1], str[index]) == 0){
+            ans[index1]++;
             break;
         }
      }
  }
  
-   for(int i = 0; i < m*n; i++){
-       if(ans[i] > 1){
-           printf("%s - %d\n", str[i], ans[i]);
-           ans[i] = 0;
+   for(int index = 0; index < rows*columns; index++){
+       if(ans[index] > 1){
+           printf("%s - %d\n", str[index], ans[index]);
+           ans[index] = 0;
        }
    }
 
