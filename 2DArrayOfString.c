@@ -23,7 +23,6 @@ void stringCopy(char dest[], char src[]){
 
 int main(){
     int row, columns;
-
     printf("Enter number of rows:");
     scanf("%d", &row);
     while (row < 1 || row > MAX_ROWS) {
@@ -51,13 +50,9 @@ int main(){
      printf("The 2D array of names is:\n");
   for(int index = 0; index < row; index++){
         for(int index1 = 0; index1 < columns; index1++){
-            
-            printf("%s ", strings[index][index1]);
-        }
-        printf("\n");
-    }
-
-   printf("Number of names starting with a vowel: %d\n", vowelCount);
+            printf("%s ", strings[index][index1]); }
+        printf("\n") }
+ printf("Number of names starting with a vowel: %d\n", vowelCount);
    char longestName[50];
    int max = 0;
    for(int index = 0; index < row; index++){
