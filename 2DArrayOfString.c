@@ -1,17 +1,14 @@
 #include<stdio.h>
 #include<string.h>
-
 #define MAX_NAME_LENGTH 50
 #define MAX_ROWS 10
 #define MAX_COLS 10
-
 int isVowel(char check_ch) {
     if (check_ch >= 'A' && check_ch <= 'Z') {
         check_ch = check_ch + 32;
     }
     return (check_ch == 'a' || check_ch == 'e' || check_ch == 'i' || check_ch == 'o' || check_ch == 'u');
 }
-
 void stringCopy(char dest[], char src[]){
     int i = 0;
     while(src[i]!= '\0'){
@@ -20,7 +17,6 @@ void stringCopy(char dest[], char src[]){
     }
     dest[i] = '\0';
 }
-
 int main(){
     int row, columns;
     printf("Enter number of rows:");
