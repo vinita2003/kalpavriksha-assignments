@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-
 int main()
 { 
     char input[50];
@@ -14,12 +13,8 @@ int main()
     int index1 =0;
     while(input[index1] != '\0'){
          if(input[index1] != ' '){
-               input2[index2++] = input[index1];
-                }
-         index1++;
-         }
-         
-
+               input2[index2++] = input[index1];}
+         index1++;}
      input2[index2] = '\0';
      int index3 = 1; 
      while(input2[index3] != '\0'){
@@ -28,10 +23,9 @@ int main()
          }
          index3++;
      }
-
-    if(count > 0){
+      if(count > 0){
          printf("%s", input2);
-    }else {
+      }else {
         input2[0] = required_char;
         printf("%s", input2);
     }
