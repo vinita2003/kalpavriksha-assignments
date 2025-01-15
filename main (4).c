@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main()
 { 
@@ -18,19 +19,20 @@ int main()
          index1++;
          }
          
+
      input2[index2] = '\0';
-     int index3 = 0; 
+     int index3 = 1; 
      while(input2[index3] != '\0'){
-         if(input2[0] == input2[index3]){
+         if(input[0] == input2[index3]){
              count++;
          }
          index3++;
      }
-    
+
     if(count > 0){
          printf("%s", input2);
     }else {
-        input[0] = required_char;
+        input2[0] = required_char;
         printf("%s", input2);
     }
     return 0;
