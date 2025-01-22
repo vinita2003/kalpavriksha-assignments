@@ -20,7 +20,7 @@ void addtostream(int value){
             head = ptr;
         }
         }}
-void sumoflastknumber(int k){
+int sumoflastknumber(int k){
     Node *temp = head;
     int count = 0;
     int sum = 0;
@@ -40,11 +40,14 @@ if(count < k){
             temp = temp->next;
             k--;
         }}
- printf("%d", sum);}
+ return sum;
+ }
 int main(){
     int numberOfOperation;
     scanf("%d", &numberOfOperation);
     getchar();
+    int arraySum[numberOfOperation];
+    int index = 0;
     int lastKNumber;
     scanf("%d", &lastKNumber);
     getchar();
@@ -61,10 +64,14 @@ int main(){
             addtostream(value);
             break;
             case 'S':
-            printf("SUM");
-            sumoflastknumber(lastKNumber);
+            // printf("SUM");
+            arraySum[index++] = sumoflastknumber(lastKNumber);
             break;
             default:
             break;}
             numberOfOperation--;}
+            printf("Output\n");
+            for(int index1 = 0; index1 < index; index1++){
+                printf("%d\n", arraySum[index1]);
+            }
         return 0;}
