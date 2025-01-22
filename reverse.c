@@ -58,14 +58,14 @@ char str[500];
      int count;
     scanf("%d", &count);
     getchar();
-    int i = 0;
+    int index = 0;
     int temp = 0;
     int is_negative = 0;
-    while(i < strlen(str)){
-        if(str[i] != ' ' && str[i] != '-'){
-            temp = temp*10 + (str[i]-'0');
+    while(index < strlen(str)){
+        if(str[index] != ' ' && str[index] != '-'){
+            temp = temp*10 + (str[index]-'0');
         }
-        else if(str[i] == '-'){
+        else if(str[index] == '-'){
             is_negative = 1;
         }else{
             if(temp > 0){
@@ -76,7 +76,7 @@ char str[500];
                insertElement(temp);
             temp = 0; 
             }}
-        i++;}
+        index++;}
     if(temp > 0){
          if(is_negative == 1){
                 temp = temp*-1;
