@@ -1,0 +1,45 @@
+Problem Statement: Student Grades Management System
+You are tasked with creating a Student Grades Management System for a school. The system uses a linked list to store the following information for each student:
+
+Student ID (unique integer)
+Name (string)
+Grade (integer from 0 to 100)
+The linked list may have the data in unsorted order.
+
+Your goal is to perform the following operations:
+
+Sort Students by Grades:
+Write a function to sort the linked list based on the Grade in descending order. If two students have the same grade, they should be sorted alphabetically by Name.
+
+Search for a Student:
+After sorting, implement a search function to find a student by their Student ID. Return the details of the student if found, or indicate that the student is not in the list.
+
+Example Input:
+Unsorted Linked List:
+
+Edit
+[ {ID: 102, Name: "Alice", Grade: 78} -> 
+  {ID: 101, Name: "Bob", Grade: 85} -> 
+  {ID: 103, Name: "Charlie", Grade: 85} -> 
+  {ID: 104, Name: "David", Grade: 67} ]
+Operations:
+Sorting Output:
+After sorting by grades (and names for ties), the linked list should look like:
+
+Edit
+[ {ID: 101, Name: "Bob", Grade: 85} -> 
+  {ID: 103, Name: "Charlie", Grade: 85} -> 
+  {ID: 102, Name: "Alice", Grade: 78} -> 
+  {ID: 104, Name: "David", Grade: 67} ]
+Search Output:
+If searching for Student ID = 103:
+
+Edit
+Output: {ID: 103, Name: "Charlie", Grade: 85}
+If searching for Student ID = 105:
+
+Output: Student not found.
+Constraints:
+The linked list can have up to 10^5 nodes.
+Sorting must be done in place without using extra arrays.
+Searching should be efficient after sorting.
