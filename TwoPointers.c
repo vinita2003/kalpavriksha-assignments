@@ -5,8 +5,7 @@ typedef struct node{
     int data;
     struct node* next;
 } Node;
-
- Node* insertElement(Node*head, int value){
+Node* insertElement(Node*head, int value){
      Node* ptr = (Node*)malloc(sizeof(Node*));
      if(ptr == NULL){
         printf("NULL");
