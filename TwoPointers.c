@@ -35,17 +35,17 @@ void twoPointer(Node* head, int count, int target){
     int start = 0;
     int end = count-1;
     while(start < end){
-        int j = start;
-        int k = end;
+        int newStart = start;
+        int newEnd = end;
         Node* temp1 = head;
         Node* temp2 = head;
-    while(j > 0){
+    while(newStart > 0){
             temp1 = temp1->next;
-            j--;
+            newStart--;
         }
-    while(k > 0){
+    while(newEnd > 0){
           temp2 = temp2->next;
-          k--;
+          newEnd--;
         }
     if(temp1->data + temp2->data == target){
             printf("%d , %d" , temp1->data, temp2->data);
