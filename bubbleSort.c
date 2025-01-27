@@ -60,6 +60,9 @@ Node* bubbleSort(Node* head, int size){
                 prevNode = traverseNode;
                 traverseNode = traverseNode->next;
         }
+      if (!swapped) {
+            break;
+        }
         itr++;
     }
     return head;
@@ -98,7 +101,7 @@ Node* bubbleSort(Node* head, int size){
      count++;
     temp1 = temp1 -> next;
    }
-bubbleSort(head, count);
+ head = bubbleSort(head, count);
 display(head);
  return 0;
 }
