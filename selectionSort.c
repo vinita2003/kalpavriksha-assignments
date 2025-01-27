@@ -50,6 +50,7 @@ Node* selectionSort(Node* head, int size){
      temp = temp->next;
      itr++;
     }
+    return head;
 }
 int main(){
     char input[200];
@@ -83,7 +84,7 @@ int main(){
         temp1 = temp1->next;
         count++;
      }
-    selectionSort(head,count);
+   head = selectionSort(head,count);
     display(head);
     return 0;
 }
