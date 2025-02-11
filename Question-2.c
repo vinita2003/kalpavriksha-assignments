@@ -25,7 +25,6 @@ Node* insertElement(Node* head, char*temp){
     }
     return head;
 }
-
 void display(Node* head){
     Node* temp = head;
     while(temp != NULL){
@@ -38,8 +37,7 @@ Node* stringconvertintolinklist(Node* head, char* input){
     int tempIndex = 0;
     char temp[100];
     int inputIndex = 0;
-
-    while(inputIndex < strlen(input)){
+ while(inputIndex < strlen(input)){
         if((input[inputIndex] == ',' || input[inputIndex] == ']') && (tempIndex > 0)){
             temp[tempIndex] = '\0';
             head = insertElement(head, temp);
@@ -49,47 +47,50 @@ Node* stringconvertintolinklist(Node* head, char* input){
             temp[tempIndex++] = input[inputIndex];
         }
         inputIndex++;
-    }
-    return head;
+ } return head;
 }
-bool twostringhavedifferentcharcter(Node*temp1, Node*temp2){
-    for(int i = 0; i < strlen(temp1->name); i++){
-        for(int j = 0; j < strlen(temp2->name); j++){
-            if(temp1->name[i] == temp2->name[j]){
-                return false;
+bool twostringhavedifferentcharcter(Node*temp1, Node*temp2, bool value){
+    int flag = 0;
+    for(int index1 = 0; index1 < strlen(temp1->name); index1++){
+        for(int index2 = 0; index2 < strlen(temp2->name); index2++){
+            if(temp1->name[index1] == temp2->name[index2]){
+                value = false;
+                break;
             }
         }
-    }
-    return true;
+        if(value == false){
+            break;
+        }
+    } return value;
 }
-
 int maximumlength(Node*head, int maximum){
-    
     for(Node* temp1 = head; temp1 != NULL; temp1 = temp1->next){
-        
         for(Node* temp2 = temp1->next; temp2 != NULL; temp2 = temp2->next){
-            
-            if(twostringhavedifferentcharcter(temp1, temp2)){
-               int m = strlen(temp1->name);
-            int n = strlen(temp2->name);
-            
-            if(m*n > maximum){
-                maximum = m*n;
+            bool value = true;
+            if(twostringhavedifferentcharcter(temp1, temp2, value)){
+               int length1 = strlen(temp1->name);
+            int length2 = strlen(temp2->name);
+            if(length1*length2 > maximum){
+                maximum = length1*length2;
             }  
             }
-           
-        }
+            }
     }
     return maximum;
 }
-
 int main(){
     Node* head = NULL;
     char input[1000];
     scanf("%[^\n]%*c", input);
-    head = stringconvertintolinklist(head, input);
+    int flag = 0;
+    if(strlen(input) > 2){
+        flag = 1;
+    }
+    if(flag == 1){
+        head = stringconvertintolinklist(head, input);
     int maximum = 0;
      maximum = maximumlength(head, maximum);
      printf("%d", maximum);
-    return 0;
+    }
+return 0;
 }
